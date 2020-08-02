@@ -46,7 +46,7 @@ const grammarly = async (word) => {
 
             wordCorrections = source.Corrections.match(regErr);
 
-            for (let i = 0; i < wordCorrections.length; i++) {
+            if(wordCorrections) {for (let i = 0; i < wordCorrections.length; i++) {
                 correctTemp = wordCorrections[i].match(regDetailError).slice(1, 4);
 
                 checkAlternative = correctTemp[2].match(regAlt);
@@ -62,7 +62,7 @@ const grammarly = async (word) => {
                     'word': correctTemp[1],
                     'definition': definition,
                 });
-            }
+            }}
 
             result = {
                 'original': source.OriginalText,
